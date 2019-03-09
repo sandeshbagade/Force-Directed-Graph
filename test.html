@@ -1,0 +1,42 @@
+!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+  	// Replace ./data.json with your JSON feed
+fetch('https://api.myjson.com/bins/rydlm').then(response => {
+  return response.json();
+}).then(data => {
+  // Work with JSON data here
+  console.log(data);
+  $.each(data, function(i, field){
+         $("div").append(field["Actor"] + " ");
+       });
+}).catch(err => {
+  // Do something for an error here
+});
+//   	let url = 'http://fakerestapi.azurewebsites.net/api/Activities';
+// fetch(url)
+// .then(res => res.json())
+// .then((out) => {
+//   console.log('Checkout this JSON! ', out);
+//  $.each(out, function(i, field){
+//         $("div").append(field + " ");
+//       });
+// })
+// .catch(err => { throw err });
+   
+    });
+  });
+</script>
+</head>
+<body>
+
+<button>Get JSON data</button>
+
+<div></div>
+
+</body>
+</html>
